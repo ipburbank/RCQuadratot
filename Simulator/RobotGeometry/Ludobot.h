@@ -5,17 +5,10 @@
 #ifndef LUDOBOT_H
 #define LUDOBOT_H
 
-#include "BulletDemoFiles/GlutDemoApplication.h"
+#include "BulletDemoFiles/DemoApplication.h"
 #include "LinearMath/btAlignedObjectArray.h"
 
 #include "btBulletDynamicsCommon.h"
-
-#include "BulletDemoFiles/GL_ShapeDrawer.h"
-#include "BulletDemoFiles/GlutStuff.h"
-
-#include "LinearMath/btIDebugDraw.h"
-
-#include "BulletDemoFiles/GLDebugDrawer.h"
 
 class RagDoll
 {
