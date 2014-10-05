@@ -18,12 +18,6 @@
 
 #include "btBulletDynamicsCommon.h"
 
-#include "BulletDemoFiles/GL_ShapeDrawer.h"
-#include "BulletDemoFiles/GlutStuff.h"
-
-#include "LinearMath/btIDebugDraw.h"
-
-#include "BulletDemoFiles/GLDebugDrawer.h"
 #include "Simulation.h"
 
 
