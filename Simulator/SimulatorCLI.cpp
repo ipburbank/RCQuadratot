@@ -10,7 +10,7 @@ int main(int argc,char** argv)
   btDynamicsWorld* dynamicsWorld = demo->getDynamicsWorld();
 
 
-  for (int i = 0; i < 30000; i++) {
+  for (int i = 0; i < 500000; i++) {
                 dynamicsWorld->stepSimulation(1 / 60.f, 10);
 /*
                 btTransform trans;

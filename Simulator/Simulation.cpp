@@ -20,6 +20,9 @@
 
 #include "Simulation.h"
 
+//for debug
+#include <iostream>
+
 
 // Enrico: Shouldn't these three variables be real constants and not defines?
 
@@ -80,8 +83,6 @@ void Simulation::initPhysics()
   // Spawn one ragdoll
   btVector3 startOffset(1,0.5,0);
   spawnRagdoll(startOffset);
-  startOffset.setValue(-1,0.5,0);
-  spawnRagdoll(startOffset);
 }
 
 void Simulation::spawnRagdoll(const btVector3& startOffset)
@@ -98,6 +99,7 @@ void	Simulation::exitPhysics()
   for (i=0;i<m_ragdolls.size();i++)
     {
       RagDoll* doll = m_ragdolls[i];
+      std::cout << "tada: " << doll->getLocation().getOrigin().getY() << std::endl;
       delete doll;
     }
 

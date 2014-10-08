@@ -8,7 +8,10 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+#build the GUI simulator too or just the CLI
+option(BUILD_VISUAL "BuildVisual" ON)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 
 #bullet
@@ -24,6 +27,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_subdirectory(RobotGeometry)
 
+if(BUILD_VISUAL)
 add_executable(SimulatorInteractive SimulatorInteractive.cpp SimulationVisual.cpp Simulation.cpp)
 
 target_link_libraries(SimulatorInteractive BulletDemoGlut RobotGeometry BulletDemoFiles BulletDynamics BulletCollision LinearMath)
@@ -32,6 +36,7 @@ target_link_libraries(SimulatorInteractive BulletDemoGlut RobotGeometry BulletDe
 target_link_libraries(SimulatorInteractive -lglut)
 target_link_libraries(SimulatorInteractive -lGL)
 target_link_libraries(SimulatorInteractive -lGLU)
+endif(BUILD_VISUAL)
 
 add_executable(SimulatorCLI SimulatorCLI.cpp Simulation.cpp)
 

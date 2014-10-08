@@ -62,6 +62,7 @@ class RagDoll
 
  public:
   RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset);
+  btTransform getLocation();
 
   virtual ~RagDoll ();
 };

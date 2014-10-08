@@ -237,3 +237,11 @@ RagDoll::~RagDoll ()
       delete m_shapes[i]; m_shapes[i] = 0;
     }
 }
+
+
+btTransform RagDoll::getLocation()
+{
+  btTransform trans;
+  m_bodies[BODYPART_PELVIS]->getMotionState()->getWorldTransform(trans);
+  return trans;
+}
