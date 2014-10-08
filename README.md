@@ -1,9 +1,10 @@
-RCQuadratot
+#RCQuadratot
 ===========
 
-CML RCQuaratot
+##About
+Built by Istvan Burbank, under advisement of Nick Cheney at the Creative Machines Lab.
 
-To build
+##To build
 1. clone
 2. enter directory
 3. mkdir build
