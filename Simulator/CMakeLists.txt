@@ -24,18 +24,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_subdirectory(RobotGeometry)
 
-#add_executable(SimulatorInteractive SimulatorInteractive.cpp SimulationVisual.cpp Simulation.cpp)
+add_executable(SimulatorInteractive SimulatorInteractive.cpp SimulationVisual.cpp Simulation.cpp)
 
-#target_link_libraries(SimulatorInteractive BulletDemoGlut RobotGeometry BulletDemoFiles BulletDynamics BulletCollision LinearMath)
+target_link_libraries(SimulatorInteractive BulletDemoGlut RobotGeometry BulletDemoFiles BulletDynamics BulletCollision LinearMath)
+
+#system libraries
+target_link_libraries(SimulatorInteractive -lglut)
+target_link_libraries(SimulatorInteractive -lGL)
+target_link_libraries(SimulatorInteractive -lGLU)
 
 add_executable(SimulatorCLI SimulatorCLI.cpp Simulation.cpp)
 
 target_link_libraries(SimulatorCLI RobotGeometry BulletDemoFiles BulletDynamics BulletCollision LinearMath)
-
-#system libraries
-#target_link_libraries(SimulatorInteractive -lglut)
-#target_link_libraries(SimulatorInteractive -lGL)
-#target_link_libraries(SimulatorInteractive -lGLU)
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)

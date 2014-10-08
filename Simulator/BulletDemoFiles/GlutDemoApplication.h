@@ -115,7 +115,7 @@ void	setCameraUp(const btVector3& camUp)
 
 	virtual void specialKeyboard(int key, int x, int y);
 
-	virtual void specialKeyboardUp(int key, int x, int y);
+	virtual void specialKeyboardUp(int key, int x, int y){}
 
 	virtual void reshape(int w, int h);
 
