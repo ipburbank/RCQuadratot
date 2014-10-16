@@ -55,7 +55,20 @@ class JobDistributor(object):
     #Some static members.  Replace the elements of 
     #computer_list with hostnames you have ssh access to
     #without a password (see ssh-keygen)
-    computer_list = ['ipb7@xanthus-2.mae.cornell.edu'] 
+    computer_list = [
+        'ipb7@xanthus-2.mae.cornell.edu',
+        'ipb7@xanthus-3.mae.cornell.edu',
+        'ipb7@xanthus-4.mae.cornell.edu',
+        'ipb7@xanthus-5.mae.cornell.edu',
+        'ipb7@xanthus-6.mae.cornell.edu',
+        'ipb7@xanthus-7.mae.cornell.edu',
+        'ipb7@xanthus-8.mae.cornell.edu',
+        'ipb7@xanthus-9.mae.cornell.edu',
+        'ipb7@xanthus-10.mae.cornell.edu',
+        'ipb7@xanthus-11.mae.cornell.edu',
+        'ipb7@xanthus-12.mae.cornell.edu',
+        'ipb7@xanthus-13.mae.cornell.edu',
+    ] 
 
     maxJobs = 4
     processes = {}  
