@@ -37,7 +37,7 @@ our responsibility to generate the line as it should be executed
 on the host machines.
 """
 curDir = os.path.abspath('.')
-commands = ["ls"]
+commands = ["./RCQuadratot/Simulator/build/SimulatorCLI"] * 100
 
 #for comm in commands:
 #    print(comm)
