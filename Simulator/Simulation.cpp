@@ -106,7 +106,6 @@ void	Simulation::exitPhysics()
   //cleanup in the reverse order of creation/initialization
 
   //remove the rigidbodies from the dynamics world and delete them
-	
   for (i=m_dynamicsWorld->getNumCollisionObjects()-1; i>=0 ;i--)
     {
       btCollisionObject* obj = m_dynamicsWorld->getCollisionObjectArray()[i];

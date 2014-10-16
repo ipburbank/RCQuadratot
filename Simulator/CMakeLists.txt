@@ -11,7 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 #build the GUI simulator too or just the CLI
 option(BUILD_VISUAL "BuildVisual" ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 
 #bullet
