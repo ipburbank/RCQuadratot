@@ -11,7 +11,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 #build the GUI simulator too or just the CLI
 option(BUILD_VISUAL "BuildVisual" ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 
 #bullet
@@ -41,16 +40,3 @@ endif(BUILD_VISUAL)
 add_executable(SimulatorCLI SimulatorCLI.cpp Simulation.cpp)
 
 target_link_libraries(SimulatorCLI RobotGeometry BulletDemoFiles BulletDynamics BulletCollision LinearMath)
-
-# add a target to generate API documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile.in 
-		${CMAKE_CURRENT_BINARY_DIR}/Docs/Doxyfile @ONLY
-	)
-	add_custom_target(docs
-		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Docs/Doxyfile
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Docs
-		COMMENT "Generating API documentation with Doxygen" VERBATIM
-	)
-endif(DOXYGEN_FOUND)
