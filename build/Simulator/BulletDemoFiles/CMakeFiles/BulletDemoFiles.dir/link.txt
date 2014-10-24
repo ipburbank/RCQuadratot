@@ -1,0 +1,2 @@
+/usr/bin/ar cr libBulletDemoFiles.a  CMakeFiles/BulletDemoFiles.dir/DemoApplication.cpp.o
+/usr/bin/ranlib libBulletDemoFiles.a
