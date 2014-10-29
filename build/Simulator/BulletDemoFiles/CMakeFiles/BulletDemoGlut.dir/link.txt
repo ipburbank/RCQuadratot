@@ -1,2 +1,0 @@
-/usr/bin/ar cr libBulletDemoGlut.a  CMakeFiles/BulletDemoGlut.dir/GLDebugFont.cpp.o CMakeFiles/BulletDemoGlut.dir/GlutDemoApplication.cpp.o CMakeFiles/BulletDemoGlut.dir/GL_ShapeDrawer.cpp.o CMakeFiles/BulletDemoGlut.dir/RenderTexture.cpp.o CMakeFiles/BulletDemoGlut.dir/GLDebugDrawer.cpp.o CMakeFiles/BulletDemoGlut.dir/GlutStuff.cpp.o CMakeFiles/BulletDemoGlut.dir/GL_DialogDynamicsWorld.cpp.o CMakeFiles/BulletDemoGlut.dir/GL_DialogWindow.cpp.o CMakeFiles/BulletDemoGlut.dir/stb_image.cpp.o
-/usr/bin/ranlib libBulletDemoGlut.a

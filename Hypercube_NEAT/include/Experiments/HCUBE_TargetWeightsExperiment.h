@@ -9,59 +9,59 @@
 
 namespace HCUBE
 {
-    class TargetWeightsExperiment : public Experiment
-    {
-    public:
-    protected:
-        NEAT::FastNetwork <double> substrate;
-        int numNodesX,numNodesY,numSheets, numNodesPerSheet;
+  class TargetWeightsExperiment : public Experiment
+  {
+  public:
+  protected:
+    NEAT::FastNetwork <double> substrate;
+    int numNodesX,numNodesY,numSheets, numNodesPerSheet;
 
-        vector<double> target_weights;                          // the target values for each link the substrate
+    vector<double> target_weights;                          // the target values for each link the substrate
 
-        map<Node,string> nameLookup;
+    map<Node,string> nameLookup;
 
-        int sizeMultiplier;
-			int convergence_step;
+    int sizeMultiplier;
+    int convergence_step;
 
-    public:
-        TargetWeightsExperiment(string _experimentName);
+  public:
+    TargetWeightsExperiment(string _experimentName);
 
-        virtual ~TargetWeightsExperiment() {}
+    virtual ~TargetWeightsExperiment() {}
 
-        virtual NEAT::GeneticPopulation* createInitialPopulation(int populationSize);
+    virtual NEAT::GeneticPopulation* createInitialPopulation(int populationSize);
 
-        virtual void generateSubstrate();
-        virtual void generateTargetWeights();
+    virtual void generateSubstrate();
+    virtual void generateTargetWeights();
 
-        int mapXYvalToGridCoord(const int & r_xyVal, const int & r_numNodesXorY);
+    int mapXYvalToGridCoord(const int & r_xyVal, const int & r_numNodesXorY);
 
-        double mapXYvalToNormalizedGridCoord(const int & r_xyVal, const int & r_numNodesXorY);
+    double mapXYvalToNormalizedGridCoord(const int & r_xyVal, const int & r_numNodesXorY);
 			
-			NEAT::FastNetwork<double> populateAndReturnSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
+    NEAT::FastNetwork<double> populateAndReturnSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
 
-        virtual void populateSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
+    virtual void populateSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
 
-        double processEvaluation(shared_ptr<NEAT::GeneticIndividual> individual);
+    double processEvaluation(shared_ptr<NEAT::GeneticIndividual> individual);
 
-        virtual void processGroup(shared_ptr<NEAT::GeneticGeneration> generation);
-//        virtual void processIndividual(shared_ptr<NEAT::GeneticIndividual> individual);
+    virtual void processGroup(shared_ptr<NEAT::GeneticGeneration> generation);
+    //        virtual void processIndividual(shared_ptr<NEAT::GeneticIndividual> individual);
 
-        virtual void processIndividualPostHoc(shared_ptr<NEAT::GeneticIndividual> individual);
+    virtual void processIndividualPostHoc(shared_ptr<NEAT::GeneticIndividual> individual);
 
-        virtual void printSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
+    virtual void printSubstrate(shared_ptr<const NEAT::GeneticIndividual> individual);
 
-        virtual void printNetworkCPPN(shared_ptr<const NEAT::GeneticIndividual> individual);
+    virtual void printNetworkCPPN(shared_ptr<const NEAT::GeneticIndividual> individual);
 
-        virtual Experiment* clone();
+    virtual Experiment* clone();
 
-        void print_vector_of_vectors(const vector<vector<int> > vector_to_print);
+    void print_vector_of_vectors(const vector<vector<int> > vector_to_print);
 
-        void print_vector_of_vectors(const vector<vector<double> > vector_to_print);
+    void print_vector_of_vectors(const vector<vector<double> > vector_to_print);
 				
-			bool converged(int generation);
+    bool converged(int generation);
 			
-			vector<double> getTargetWeights() { return target_weights; }
-    };
+    vector<double> getTargetWeights() { return target_weights; }
+  };
 
 }
 
