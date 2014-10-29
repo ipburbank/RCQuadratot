@@ -4,6 +4,7 @@
 
 #include "Experiments/HCUBE_FindClusterExperiment.h"
 #include "Experiments/HCUBE_FindClusterNoGeomExperiment.h"
+#include "Experiments/HCUBE_RCQuadratotExperiment.h"
 
 #include "Experiments/HCUBE_SoftbotsExperiment.h"
 
@@ -43,8 +44,8 @@ namespace HCUBE
 		
     switch (experimentType)
       {
-      case EXPERIMENT_SOFTBOTS:
-        experiments.push_back(shared_ptr<Experiment>(new SoftbotsExperiment("")));
+      case EXPERIMENT_RCQUADRATOT:
+        experiments.push_back(shared_ptr<Experiment>(new RCQuadratotExperiment("")));
         break;
 				
       default:
@@ -272,29 +273,7 @@ namespace HCUBE
           }
         cout << "Experiment finished\n";
 			
-        if(experimentType == EXPERIMENT_FIND_CLUSTER_EXPERIMENT)
-          {
-            ofstream output_file;
-            output_file.open("gen-Genchamp-AvgDist.txt", ios::trunc );
-            output_file.close();
-				
-            cout << "Saving Average Distances\n";
-            output_file.open ("gen-Genchamp-AvgDist.txt", ios::app );
-            for (int generations=0;generations<maxGenerations;generations++)
-              {
-                if(generations==0)
-                  {
-                    output_file << "# 1. generation\n";
-                    output_file << "# 2. genChamp Average Distance to Target\n";
-                    output_file << "# 3. blank\n";
-                    output_file << "# 4. blank\n";
-                    output_file << endl;
-                  }
-					
-                output_file << generations+1 << " " << static_pointer_cast<FindClusterStats>(population->getBestIndividualOfGeneration(generations)->getUserData())->averageDistance() << endl;
-              }
-            output_file.close();
-          }
+        
 			
         cout << "Saving Dump...";
         population->dump(outputFileName+string("_pop.xml"),true,false);

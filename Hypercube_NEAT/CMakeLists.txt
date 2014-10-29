@@ -98,6 +98,7 @@ ADD_LIBRARY(
 	src/Experiments/HCUBE_FindClusterExperiment.cpp
 	src/Experiments/HCUBE_FindClusterNoGeomExperiment.cpp
 	src/Experiments/HCUBE_SoftbotsExperiment.cpp
+	src/Experiments/HCUBE_RCQuadratotExperiment.cpp
 
 	include/HCUBE_Boost.h
 	include/HCUBE_Defines.h
@@ -107,6 +108,7 @@ ADD_LIBRARY(
 
 	include/Experiments/HCUBE_FindClusterExperiment.h
 	include/Experiments/HCUBE_FindClusterNoGeomExperiment.h
+	include/Experiments/HCUBE_RCQuadratotExperiment.h
 
 	include/Experiments/HCUBE_Experiment.h
 )

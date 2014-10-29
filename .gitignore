@@ -24,5 +24,5 @@ Thumbs.db
 
 # PROJECT SPECIFIC
 /docs/html/*
-*/build/*
+build/*
 !dir.info

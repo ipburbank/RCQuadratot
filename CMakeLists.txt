@@ -6,7 +6,7 @@ set (VERSION_MINOR 1)
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -o3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 #project components
 add_subdirectory(Simulator)
