@@ -13,3 +13,5 @@ Built by Istvan Burbank, under advisement of Nick Cheney at the Creative Machine
   `cmake -G "Unix Makefiles" -DBUILD_VISUAL=OFF ..`  
    otherwise,  
   `cmake -G "Unix Makefiles" -DBUILD_VISUAL=ON ..`
+6. make -j8 install
+7. `./bin/Hypercube_NEAT -I bin/RCQuadratotExperiment.dat -O test -R 12`
