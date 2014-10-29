@@ -50,10 +50,10 @@ namespace HCUBE
     
     network.update(); //run the CPPN network
 
-    double weight = network.getValue("Weight");
+    double weight = std::max(0.d, network.getValue("Weight"));
     cout << "weight is: " << weight << std::endl;
 
-    return weight;
+    return (weight + 1.0 ) * 100;
   }
   
   void RCQuadratotExperiment::processGroup(shared_ptr<NEAT::GeneticGeneration> generation)
@@ -76,9 +76,8 @@ namespace HCUBE
 	    cout << "Fitness Less Than Zero!!!, it is: " << fitness << "\n";
 	    exit(10);
 	  }
-	// cout << "Individual Evaluation complete!\n";
-	cout << "Original Fitness: " << individual->getOrigFitness() << endl;
-	cout << "Adjusted Fitness: " << fitness << endl;
+
+	cout << "Fitness: " << fitness << endl;
 	individual->reward(fitness);
 	
 	cout << endl;

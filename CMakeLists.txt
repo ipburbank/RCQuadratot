@@ -12,6 +12,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 add_subdirectory(Simulator)
 add_subdirectory(Hypercube_NEAT)
 
+INSTALL (
+    FILES 
+        ${CMAKE_CURRENT_BINARY_DIR}/Hypercube_NEAT/Hypercube_NEAT
+        ${CMAKE_CURRENT_SOURCE_DIR}/Hypercube_NEAT/config/RCQuadratotExperiment.dat
+    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin
+)
+
 
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)

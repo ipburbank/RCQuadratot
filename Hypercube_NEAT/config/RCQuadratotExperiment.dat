@@ -50,7 +50,7 @@ ExtraActivationFunctions 1.0 			// probability of initializing a new hidden node
 
 OnlySaveFinalPop 0 				// only save xml files of the CPPNs from the final generation (default: 0)
 
-ExperimentType 43.0 				// 43 = SoftbotsExperiment
+ExperimentType 44.0 				// 43 = SoftbotsExperiment
 
 GenerationDumpModulo 10.0  			// depreciated: just ignore this
 ConvergenceStep 0 				// used for switching sub-experiments (ignore and leave as default 0)
