@@ -612,10 +612,10 @@ namespace NEAT
         {
             output_file << "# 1. generation\n";
             output_file << "# 3. genChamp Adjusted Fitness\n";
-            output_file << "# 3. genChamp Original Fitness (Distance)\n";
+	    /*  output_file << "# 3. genChamp Original Fitness (Distance)\n";*/
             output_file << "# 4. genChamp Node Count\n";
             output_file << "# 5. average Adjusted Fitness\n";
-            output_file << "# 5. average Original Fitness (Distance) \n";
+	    /*            output_file << "# 5. average Original Fitness (Distance) \n";*/
 			// output_file << "# 5. genChamp Direction Changes\n";
 			// if(generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getUserData()) output_file << "# 6. UserData (if you implemented it)\n";
             output_file << endl;
@@ -623,16 +623,16 @@ namespace NEAT
 
         char generation [50];              sprintf(generation,              "%04i", onGeneration+1);
         char genChampAdjustedFitness [50]; sprintf(genChampAdjustedFitness, "%06f", generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getFitness());
-        char genChampOriginalFitness [50]; sprintf(genChampOriginalFitness, "%06f", generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getOrigFitness());
+        //char genChampOriginalFitness [50]; sprintf(genChampOriginalFitness, "%06f", generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getOrigFitness());
         char genChampNodeCount [50];       sprintf(genChampNodeCount,       "%04i", generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getNodesCount());
-        char averageOriginalFitness [50];  sprintf(averageOriginalFitness,  "%06f", averageFitnessPrint);
-        char averageAdjustedFitness [50];  sprintf(averageAdjustedFitness,  "%06f", averageOrigFitnessPrint);
+	// char averageOriginalFitness [50];  sprintf(averageOriginalFitness,  "%06f", averageOrigFitnessPrint);
+	char averageAdjustedFitness [50];  sprintf(averageAdjustedFitness,  "%06f", averageFitnessPrint);
 
         output_file << generation << " \t" 
                     << genChampAdjustedFitness << " \t"
-                    << genChampOriginalFitness << " \t"
+	  /* << genChampOriginalFitness << " \t"*/
                     << genChampNodeCount << " \t"
-                    << averageOriginalFitness << " \t"
+	  /*     << averageOriginalFitness << " \t"*/
                     << averageAdjustedFitness << " \t";
 					// << generations[generations.size()-1/*onGeneration*/]->getIndividual(0)->getDirectionChanges();
 		

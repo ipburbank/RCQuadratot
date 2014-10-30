@@ -83,4 +83,10 @@ namespace HCUBE
 	cout << endl;
       }
   }
+
+  Experiment* RCQuadratotExperiment::clone()
+  {
+    RCQuadratotExperiment* experiment = new RCQuadratotExperiment(*this);
+    return experiment;
+  }
 }

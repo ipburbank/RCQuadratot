@@ -25,7 +25,7 @@ namespace HCUBE
     double processEvaluation(shared_ptr<NEAT::GeneticIndividual> individual);
     virtual void processGroup(shared_ptr<NEAT::GeneticGeneration> generation);
 
-    virtual Experiment* clone(){}
+    virtual Experiment* clone();
   };
 
 }
