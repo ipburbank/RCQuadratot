@@ -16,6 +16,8 @@ INSTALL (
     FILES 
         ${CMAKE_CURRENT_BINARY_DIR}/Hypercube_NEAT/Hypercube_NEAT
         ${CMAKE_CURRENT_SOURCE_DIR}/Hypercube_NEAT/config/RCQuadratotExperiment.dat
+        ${CMAKE_CURRENT_BINARY_DIR}/Simulator/SimulatorCLI
+        ${CMAKE_CURRENT_BINARY_DIR}/Simulator/SimulatorInteractive
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin
 )

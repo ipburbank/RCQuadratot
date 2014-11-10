@@ -61,3 +61,7 @@ SeedingSoDecrementByOne 0 			// used only for ShapesExperiment: ignore
 
 // RCQUADRATOT SPECIFIC PARAMETERS:
 //---------------------------------------
+NumInputNeurons 8
+NumHiddenNeurons 10
+NumHiddenLayers 2
+NumOutputNeurons 8

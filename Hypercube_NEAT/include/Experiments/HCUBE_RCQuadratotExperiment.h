@@ -2,8 +2,10 @@
 #define HCUBE_RCQUADRATOT_H_INCLUDED
 
 #include "HCUBE_Experiment.h"
-
 #include "HCUBE_Vector2.h"
+
+#include "tinyxmldll.h"
+#include <boost/filesystem.hpp>
 
 #include <fstream>
 #include <stdlib.h>
@@ -22,7 +24,7 @@ namespace HCUBE
     
     virtual NEAT::GeneticPopulation* createInitialPopulation(int populationSize);
 
-    double processEvaluation(shared_ptr<NEAT::GeneticIndividual> individual);
+    double invidividualToFile(shared_ptr<NEAT::GeneticIndividual> individual, int generation, int individualId);
     virtual void processGroup(shared_ptr<NEAT::GeneticGeneration> generation);
 
     virtual Experiment* clone();

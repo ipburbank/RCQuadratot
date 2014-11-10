@@ -49,7 +49,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
   btTransform transform;
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(1.75), btScalar(0.)));
-  m_bodies[BODYPART_BODY] = localCreateRigidBody(btScalar(1.75), offset*transform, m_shapes[BODYPART_BODY]);
+  m_bodies[BODYPART_BODY] = localCreateRigidBody(btScalar(0), offset*transform, m_shapes[BODYPART_BODY]);
   
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(2.), btScalar(1.75), btScalar(0.)));
@@ -58,7 +58,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(1.75), btScalar(2.)));
-  transform.getBasis().setEulerZYX(M_PI_2,0,M_PI_2);
+  transform.getBasis().setEulerZYX(M_PI_2,0,-M_PI_2);
   m_bodies[BODYPART_LEG2_TOP] = localCreateRigidBody(btScalar(1.), offset*transform, m_shapes[BODYPART_LEG2_TOP]);
 
   transform.setIdentity();
@@ -68,7 +68,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(1.75), btScalar(-2.)));
-  transform.getBasis().setEulerZYX(M_PI_2,0,M_PI_2);
+  transform.getBasis().setEulerZYX(M_PI_2,0,-M_PI_2);
   m_bodies[BODYPART_LEG4_TOP] = localCreateRigidBody(btScalar(1.), offset*transform, m_shapes[BODYPART_LEG4_TOP]);
 
   transform.setIdentity();
@@ -78,7 +78,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(3.)));
-  transform.getBasis().setEulerZYX(0,0,0);
+  transform.getBasis().setEulerZYX(0,-M_PI_2,0);
   m_bodies[BODYPART_LEG2_BOTTOM] = localCreateRigidBody(btScalar(1.), offset*transform, m_shapes[BODYPART_LEG2_BOTTOM]);
 
   transform.setIdentity();
@@ -88,7 +88,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(-3.)));
-  transform.getBasis().setEulerZYX(0,0,0);
+  transform.getBasis().setEulerZYX(0,-M_PI_2,0);
   m_bodies[BODYPART_LEG4_BOTTOM] = localCreateRigidBody(btScalar(1.), offset*transform, m_shapes[BODYPART_LEG4_BOTTOM]);
 
 
@@ -120,15 +120,15 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG1_HIP], true);
   }
-
+  
   {
     localA.setIdentity();
-    localA.getBasis().setEulerZYX(0,M_PI_2,0);
+    localA.getBasis().setEulerZYX(0,-M_PI_2,0);
     localA.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(1.)));
   
     localB.setIdentity();
     localB.getBasis().setEulerZYX(0,0,0);
-    localB.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
+    localB.setOrigin(btVector3(btScalar(0.), btScalar(-1.), btScalar(0.)));
   
     hingeC = new btHingeConstraint(*m_bodies[BODYPART_BODY], *m_bodies[BODYPART_LEG2_TOP], localA, localB);
     hingeC->setLimit(btScalar(0), btScalar(M_PI));
@@ -137,7 +137,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG2_HIP], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,0,-M_PI_2);
@@ -145,16 +145,16 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
   
     localB.setIdentity();
     localB.getBasis().setEulerZYX(0,0,0);
-    localB.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
+    localB.setOrigin(btVector3(btScalar(0.), btScalar(-1.), btScalar(0.)));
   
     hingeC = new btHingeConstraint(*m_bodies[BODYPART_BODY], *m_bodies[BODYPART_LEG3_TOP], localA, localB);
-    hingeC->setLimit(btScalar(-M_PI_2), btScalar(M_PI_2));
+    hingeC->setLimit(btScalar(M_PI_2), btScalar(M_PI + M_PI_2));
     m_joints[JOINT_LEG3_HIP] = hingeC;
     hingeC->setDbgDrawSize(CONSTRAINT_DEBUG_SIZE);
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG3_HIP], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,-M_PI_2,0);
@@ -171,7 +171,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG4_HIP], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,0,0);
@@ -188,41 +188,41 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG1_KNEE], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,0,0);
-    localA.setOrigin(btVector3(btScalar(0.), btScalar(-1.), btScalar(0.)));
+    localA.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
   
     localB.setIdentity();
     localB.getBasis().setEulerZYX(0,0,0);
     localB.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
   
     hingeC = new btHingeConstraint(*m_bodies[BODYPART_LEG2_TOP], *m_bodies[BODYPART_LEG2_BOTTOM], localA, localB);
-    hingeC->setLimit(btScalar(-M_PI_2), btScalar(M_PI_2));
+    hingeC->setLimit(btScalar(M_PI_2), btScalar(M_PI_2 + M_PI));
     m_joints[JOINT_LEG2_KNEE] = hingeC;
     hingeC->setDbgDrawSize(CONSTRAINT_DEBUG_SIZE);
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG2_KNEE], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,0,0);
-    localA.setOrigin(btVector3(btScalar(0.), btScalar(-1.), btScalar(0.)));
+    localA.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
   
     localB.setIdentity();
     localB.getBasis().setEulerZYX(0,0,0);
     localB.setOrigin(btVector3(btScalar(0.), btScalar(1.), btScalar(0.)));
   
     hingeC = new btHingeConstraint(*m_bodies[BODYPART_LEG3_TOP], *m_bodies[BODYPART_LEG3_BOTTOM], localA, localB);
-    hingeC->setLimit(btScalar(-M_PI_2), btScalar(M_PI_2));
+    hingeC->setLimit(btScalar(M_PI_2), btScalar(M_PI_2 + M_PI));
     m_joints[JOINT_LEG3_KNEE] = hingeC;
     hingeC->setDbgDrawSize(CONSTRAINT_DEBUG_SIZE);
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG3_KNEE], true);
   }
-
+  
   {
     localA.setIdentity();
     localA.getBasis().setEulerZYX(0,0,0);
@@ -239,7 +239,6 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG4_KNEE], true);
   }
-
 }
 
 RagDoll::~RagDoll ()
