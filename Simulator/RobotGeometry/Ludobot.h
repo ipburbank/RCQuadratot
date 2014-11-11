@@ -46,12 +46,18 @@ class RagDoll
   btDynamicsWorld* m_ownerWorld;
   btCollisionShape* m_shapes[BODYPART_COUNT];
   btRigidBody* m_bodies[BODYPART_COUNT];
-  btTypedConstraint* m_joints[JOINT_COUNT];
+  btHingeConstraint* m_joints[JOINT_COUNT];
 
   btRigidBody* localCreateRigidBody (btScalar mass, const btTransform& startTransform, btCollisionShape* shape);
 
  public:
   RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset);
+  /**
+   * set a joint position
+   * @param joint which joint to control
+   * @param angle in [0, 1]
+   */
+  void setJointTarget(int joint, float angle);
   btTransform getLocation();
 
   virtual ~RagDoll ();

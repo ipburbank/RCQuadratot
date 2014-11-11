@@ -239,6 +239,18 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
 
     m_ownerWorld->addConstraint(m_joints[JOINT_LEG4_KNEE], true);
   }
+
+  // add motors
+  for (int i=0; i < JOINT_COUNT; ++i)
+    {
+      m_joints[i]->enableMotor(true);
+      m_joints[i]->setMaxMotorImpulse(btScalar(1));
+    }
+  //disable deactivation for legs
+  for (int i=0; i < BODYPART_COUNT; ++i)
+    {
+      m_bodies[i]->setActivationState(DISABLE_DEACTIVATION);
+    }
 }
 
 RagDoll::~RagDoll ()
@@ -264,6 +276,14 @@ RagDoll::~RagDoll ()
     }
 }
 
+void RagDoll::setJointTarget(int jointId, float angle)
+{
+  auto joint = m_joints[jointId];
+  angle = joint->getLowerLimit()
+    + (joint->getUpperLimit() - joint->getLowerLimit()) * angle;
+
+  joint->setMotorTarget(btScalar(angle), btScalar(1));
+}
 
 btTransform RagDoll::getLocation()
 {

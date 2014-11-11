@@ -23,7 +23,7 @@ GLDebugDrawer	gDebugDrawer;
 
 int main(int argc,char** argv)
 {
-  SimulationVisual* demo = new SimulationVisual();
+  SimulationVisual* demo = SimulationVisual::Create();
 
   demo->initPhysics();
   demo->getDynamicsWorld()->setDebugDrawer(&gDebugDrawer);

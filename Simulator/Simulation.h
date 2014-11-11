@@ -20,6 +20,8 @@
 
 #include "RobotGeometry/Ludobot.h"
 
+#include <math.h>
+
 #include "LinearMath/btAlignedObjectArray.h"
 class btBroadphaseInterface;
 class btCollisionShape;
@@ -43,16 +45,20 @@ class Simulation : public virtual DemoApplication
   btConstraintSolver*	m_solver;
 
   btDefaultCollisionConfiguration* m_collisionConfiguration;
-
+  
  public:
+  Simulation(){}
+  
   void initPhysics();
-
+  
   void exitPhysics();
   
-  Simulation()
-    {
-      initPhysics();
-    }
+  static Simulation* Create()
+  {
+    Simulation* sim = new Simulation();
+    sim->initPhysics();
+    return sim;
+  }
 
   ~Simulation()
     {
@@ -60,7 +66,8 @@ class Simulation : public virtual DemoApplication
     }
   
   void spawnRagdoll(const btVector3& startOffset);
-	
+
+  void jointTickCallback(btScalar timeStep);
 };
 
 

@@ -38,6 +38,21 @@
 #define M_PI_4     0.785398163397448309616
 #endif
 
+int tick;
+void Simulation::jointTickCallback(btScalar timeStep)
+{
+  tick += 10;
+  for(int i=0; i<8; i++)
+    {
+      m_ragdolls[0]->setJointTarget(i, (1.f + sin(tick/1000.f))/2.f);
+    }
+}
+void robotPreTickCallback (btDynamicsWorld *world, btScalar timeStep)
+{
+  Simulation* sim = (Simulation*)world->getWorldUserInfo();
+  sim->jointTickCallback(timeStep);	
+}
+
 void Simulation::initPhysics()
 {
   // Setup the basic world
@@ -54,11 +69,10 @@ void Simulation::initPhysics()
 
   m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase,
                                                 m_solver,m_collisionConfiguration);
-  //m_dynamicsWorld->getDispatchInfo().m_useConvexConservativeDistanceUtil = true;
-  //m_dynamicsWorld->getDispatchInfo().m_convexConservativeDistanceThreshold = 0.01f;
-
-
-
+  
+  //tick = 0;
+  m_dynamicsWorld->setInternalTickCallback(robotPreTickCallback, this, true);
+  
   // Setup a big ground box
   {
     btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(200.),
@@ -68,16 +82,10 @@ void Simulation::initPhysics()
     groundTransform.setIdentity();
     groundTransform.setOrigin(btVector3(0,-10,0));
 
-#define CREATE_GROUND_COLLISION_OBJECT 1
-#ifdef CREATE_GROUND_COLLISION_OBJECT
     btCollisionObject* fixedGround = new btCollisionObject();
     fixedGround->setCollisionShape(groundShape);
     fixedGround->setWorldTransform(groundTransform);
     m_dynamicsWorld->addCollisionObject(fixedGround);
-#else
-    localCreateRigidBody(btScalar(0.),groundTransform,groundShape);
-#endif //CREATE_GROUND_COLLISION_OBJECT
-
   }
 
   // Spawn one ragdoll
@@ -93,7 +101,6 @@ void Simulation::spawnRagdoll(const btVector3& startOffset)
 
 void	Simulation::exitPhysics()
 {
-
   int i;
 
   for (i=0;i<m_ragdolls.size();i++)
@@ -137,7 +144,5 @@ void	Simulation::exitPhysics()
   //delete dispatcher
   delete m_dispatcher;
 
-  delete m_collisionConfiguration;
-
-	
+  delete m_collisionConfiguration;	
 }

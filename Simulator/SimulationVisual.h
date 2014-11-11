@@ -27,7 +27,7 @@ class SimulationVisual : public GlutDemoApplication, public Simulation
   virtual  void swapBuffers(){};
   virtual  void updateModifierKeys(){};
 
-  static DemoApplication* Create()
+  static SimulationVisual* Create()
   {
     SimulationVisual* demo = new SimulationVisual();
     demo->myinit();

@@ -4,7 +4,7 @@
 
 int main(int argc,char** argv)
 {
-  Simulation* demo = new Simulation();
+  Simulation* demo = Simulation::Create();
 
   demo->initPhysics();
   btDynamicsWorld* dynamicsWorld = demo->getDynamicsWorld();
