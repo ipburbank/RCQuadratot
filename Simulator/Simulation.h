@@ -19,6 +19,7 @@
 #define SIMULATION_H
 
 #include "RobotGeometry/Ludobot.h"
+#include "ANN/neuralNet.h"
 
 #include <math.h>
 

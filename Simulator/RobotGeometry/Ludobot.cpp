@@ -49,7 +49,7 @@ RagDoll::RagDoll (btDynamicsWorld* ownerWorld, const btVector3& positionOffset)
   btTransform transform;
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(0.), btScalar(1.75), btScalar(0.)));
-  m_bodies[BODYPART_BODY] = localCreateRigidBody(btScalar(0), offset*transform, m_shapes[BODYPART_BODY]);
+  m_bodies[BODYPART_BODY] = localCreateRigidBody(btScalar(5), offset*transform, m_shapes[BODYPART_BODY]);
   
   transform.setIdentity();
   transform.setOrigin(btVector3(btScalar(2.), btScalar(1.75), btScalar(0.)));

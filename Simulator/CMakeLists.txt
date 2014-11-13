@@ -25,6 +25,7 @@ add_subdirectory(BulletDemoFiles)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_subdirectory(RobotGeometry)
+add_subdirectory(ANN)
 
 if(BUILD_VISUAL)
 add_executable(SimulatorInteractive SimulatorInteractive.cpp SimulationVisual.cpp Simulation.cpp)

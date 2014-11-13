@@ -8,6 +8,10 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
+#libraries
+include_directories(Libraries/tinyxmldll/include)
+add_subdirectory(Libraries/tinyxmldll)
+
 #project components
 add_subdirectory(Simulator)
 add_subdirectory(Hypercube_NEAT)
