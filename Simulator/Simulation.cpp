@@ -56,8 +56,8 @@ void robotPreTickCallback (btDynamicsWorld *world, btScalar timeStep)
 void Simulation::initPhysics()
 {
   // setup the ANN
-  ANN neuralNet = new ANN();
-  neuralNet->loadXML("runs/gen1/individual.xml");
+  ANN* neuralNet = new ANN();
+  neuralNet->loadXML();
   
   // Setup the basic world
   m_collisionConfiguration = new btDefaultCollisionConfiguration();

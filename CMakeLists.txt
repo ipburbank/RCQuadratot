@@ -11,6 +11,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 #libraries
 include_directories(Libraries/tinyxmldll/include)
 add_subdirectory(Libraries/tinyxmldll)
+include_directories(Libraries/zlib/include)
+add_subdirectory(Libraries/zlib)
 
 #project components
 add_subdirectory(Simulator)

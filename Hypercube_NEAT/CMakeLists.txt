@@ -17,12 +17,9 @@ IF(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 ENDIF(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
 include_directories(Libraries/JGTL/include)
-include_directories(Libraries/zlib/include)
 include_directories(src/hiller)
 include_directories(include)
 include_directories(NEAT/include)
-
-add_subdirectory(Libraries/zlib)
 
 INCLUDE_REGULAR_EXPRESSION( "^.*([Hh][Cc][Uu][Bb][Ee]|[Nn][Ee][Aa][Tt]|main).*$" )
 
